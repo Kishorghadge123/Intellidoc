@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="C:/Users/juee.ningshetti/IdeaProjects/Intellidoc/src/Tests/LoginTest.java">
+    <classes>
+
+        <class name="Tests.DocumentTest"><methods><include name="DocumentFlow"/></methods></class>
+        <class name="Tests.RoleWiseTest"><methods><include name="RoleWiseFlow"/></methods></class>
+        <class name="Tests.LoginTest"><methods><include name="LoginTestFlow"/></methods></class>
+        <class name="Tests.ForgetPwdTest"><methods><include name="ForgotPwdFlow"/></methods></class>
+        <class name="Tests.FunctionalTabTest"><methods><include name="FunctionalFlow"/></methods></class>
+        <class name="Tests.EditProfileTest"><methods><include name="EditProfileFlow"/></methods></class>
+        <class name="Tests.TemplateTest"><methods><include name="TemplateFlow"/></methods></class>
+        <class name="Tests.ProjectFlowTest"><methods><include name="ProjectFlow"/></methods></class>
+        <class name="Tests.DatasetTest"><methods><include name="DataSetFlow"/></methods></class>
+        <class name="Tests.AnalyticsTest"><methods><include name="AnalyticsFlow"/></methods></class>
+        <class name="Tests.CreateUserTest"><methods><include name="CreateUserFlow"/></methods></class>
+        <class name="Tests.UpdateUserTest"><methods><include name="UpdateUserFlow"/></methods></class>
+
+
+
+
+
+    </classes>
+</test>
+</suite>
