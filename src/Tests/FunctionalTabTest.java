@@ -23,7 +23,7 @@ public class FunctionalTabTest extends BasePage {
     public void FunctionalFlow() throws InterruptedException, IOException {
         try {
             BasePage.LoginTest();
-            Thread.sleep(8000);
+            Thread.sleep(10000);
             FunctionalTab FunctionalTabObj = new FunctionalTab(driver);
             //  driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS); // pageload timeout
             // driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
@@ -76,7 +76,7 @@ public class FunctionalTabTest extends BasePage {
             Thread.sleep(8000);
             TakesScreen.takeSnapShot(driver, "test-output//FunctionalTab//HorizontalDocuments.jpg");
             driver.navigate().back();
-           Thread.sleep(6000);
+            Thread.sleep(6000);
 
             //TC 3.8 Horizontal Analytics and Navigate Back
             FunctionalTabObj.ClickHorizontalAnalytics();
@@ -126,7 +126,7 @@ public class FunctionalTabTest extends BasePage {
             FunctionalTabObj.ClickVerticalDocuments();
             Thread.sleep(8000);
             TakesScreen.takeSnapShot(driver, "test-output//FunctionalTab//VerticalDocuments.jpg");
-         //   driver.navigate().back();
+            //   driver.navigate().back();
             Thread.sleep(6000);
 
             //TC 3.15 Vertical Analytics and Navigate Back

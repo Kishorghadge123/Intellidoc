@@ -10,6 +10,8 @@ public class EditProfilePage {
     By EditProfile = By.xpath("//button[@id='profile-modal-button']");
     By Cancel = By.xpath("//mat-icon[contains(text(),'close')]");
     By Visible = By.xpath("//mat-icon[contains(text(),'visibility')]");
+    By Remove = By.xpath("//span[contains(text(),'Remove')]");
+    By SavePrfl = By.xpath("//span[contains(text(),'Save')]");
 
     public EditProfilePage(WebDriver driver) {
         this.driver = driver;
@@ -30,5 +32,12 @@ public class EditProfilePage {
     }
     public void CancelButton() {
         driver.findElement(Cancel).click();
+    }
+    public void RemoveProfile(){
+        driver.findElement(Remove).click();
+    }
+    public void SaveProfile()
+    {
+        driver.findElement(SavePrfl).click();
     }
 }

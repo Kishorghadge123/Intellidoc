@@ -7,6 +7,7 @@ import Utilities.TakesScreen;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+
 import java.io.IOException;
 
 public class DatasetTest extends BasePage {
@@ -16,7 +17,7 @@ public class DatasetTest extends BasePage {
 
         try {
             BasePage.LoginTest();
-            Thread.sleep(4000);
+            Thread.sleep(10000);
             DatasetPage DatasetPageObj = new DatasetPage(driver);
             test.log(status.INFO, "TestInformation");
             test.log(status.PASS, "TestPassed");
@@ -72,7 +73,7 @@ public class DatasetTest extends BasePage {
             DatasetPageObj.ClickDatasetName(ReadProps.readAttr("DName2"));
             Thread.sleep(3000);
             WebElement upload_file = driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-landing[1]/div[1]/div[1]/main[1]/div[1]/app-dataset-editor[1]/div[4]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/input[1]"));
-            upload_file.sendKeys("C:\\Users\\juee.ningshetti\\Documents\\sampledata.csv");
+            upload_file.sendKeys("C:\\Users\\juee.ningshetti\\IdeaProjects\\Intellidoc\\Files\\sampledata.csv");
             Thread.sleep(4000);
             TakesScreen.takeSnapShot(driver, "test-output//Datasets//Action-Name+File_NoValidation.jpg");
             Thread.sleep(4000);
@@ -86,7 +87,7 @@ public class DatasetTest extends BasePage {
             DatasetPageObj.ClickDatasetName(ReadProps.readAttr("DName2"));
             Thread.sleep(4000);
             WebElement upload_file1 = driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-landing[1]/div[1]/div[1]/main[1]/div[1]/app-dataset-editor[1]/div[4]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/input[1]"));
-            upload_file1.sendKeys("C:\\Users\\juee.ningshetti\\Documents\\sampledata.csv");
+            upload_file1.sendKeys("C:\\Users\\juee.ningshetti\\IdeaProjects\\Intellidoc\\Files\\sampledata.csv");
             Thread.sleep(4000);
 
             //validation type as "name" for dataset to create a new dataset
@@ -103,7 +104,7 @@ public class DatasetTest extends BasePage {
             DatasetPageObj.ClickValidationRoles();
             Thread.sleep(3000);
             TakesScreen.takeSnapShot(driver, "test-output//Datasets//DatasetDetails.jpg");
-            Thread.sleep(4000);
+            Thread.sleep(5000);
 
 //            DatasetPageObj.ClickCreateDataset();
 //            Thread.sleep(4000);

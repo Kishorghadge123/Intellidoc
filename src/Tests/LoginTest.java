@@ -14,7 +14,8 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 public class LoginTest extends BasePage {
-    WebDriver driver ;
+    WebDriver driver;
+
     @Test
     public static void LoginTestFlow() throws Exception {
         try {
@@ -25,6 +26,8 @@ public class LoginTest extends BasePage {
             System.setProperty("webdriver.chrome.driver", projectPath + ".\\Drivers\\chromedriver.exe");
             WebDriver driver = new ChromeDriver();
             LoginPage loginPageObjects = new LoginPage(driver);
+
+
             driver.get(ReadProps.readAttr("URL"));
             String actualTitle = driver.getTitle();
             String expectedTitle = "IntelliDoc";
@@ -51,6 +54,8 @@ public class LoginTest extends BasePage {
 
             //TC 1.1 - Login with blank user id and blank password
             loginPageObjects.clickLoginButton();
+            Thread.sleep(500);
+
             loginPageObjects.VerifyAssertError();
             Thread.sleep(2000);
             TakesScreen.takeSnapShot(driver, "test-output//LoginPage//BlankUserNamePWD.jpg");
@@ -62,6 +67,9 @@ public class LoginTest extends BasePage {
             loginPageObjects.setUsername(ReadProps.readAttr("Username2"));
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
+            Thread.sleep(1000);
+
+            loginPageObjects.VerifyAssertError();
             Thread.sleep(2000);
             TakesScreen.takeSnapShot(driver, "test-output//LoginPage//InvalidIDBlankPWD.jpg");
             System.out.println("Login failed - Invalid UserID and Blank PWD !");
@@ -73,6 +81,9 @@ public class LoginTest extends BasePage {
             loginPageObjects.setPassword(ReadProps.readAttr("Password"));
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
+            //Thread.sleep(300);
+            //loginPageObjects.VerifyAssertError();
+
             Thread.sleep(2000);
             TakesScreen.takeSnapShot(driver, "test-output//LoginPage//BlankIDValidPWD.jpg");
             System.out.println("Login failed - Blank UserID and Valid PWD !");
@@ -84,6 +95,10 @@ public class LoginTest extends BasePage {
             loginPageObjects.setPassword(ReadProps.readAttr("Password1"));
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
+            Thread.sleep(700);
+
+            //loginPageObjects.VerifyAssertError();
+
             Thread.sleep(2000);
             TakesScreen.takeSnapShot(driver, "test-output//LoginPage//BlankIDInvalidPWD.jpg");
             System.out.println("Login failed - Blank UserID and invalid PWD !");
@@ -96,6 +111,10 @@ public class LoginTest extends BasePage {
             loginPageObjects.ClearPWD();
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
+            Thread.sleep(300);
+
+            //loginPageObjects.VerifyAssertError();
+
             Thread.sleep(2000);
             TakesScreen.takeSnapShot(driver, "test-output//LoginPage//ValidIDBlankPWD.jpg");
             System.out.println("Login failed - Valid UserID and Blank PWD");
@@ -109,6 +128,8 @@ public class LoginTest extends BasePage {
             loginPageObjects.setPassword(ReadProps.readAttr("Password1"));
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
+            Thread.sleep(700);
+            // loginPageObjects.VerifyAssertErrorInvalidData();
             TakesScreen.takeSnapShot(driver, "test-output//LoginPage//InvalidIDInvalidPWD.jpg");
             Thread.sleep(2000);
             System.out.println("Login failed - Invalid UserID and Invalid PWD");
@@ -119,8 +140,8 @@ public class LoginTest extends BasePage {
             loginPageObjects.setPassword(ReadProps.readAttr("Password"));
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
-            Thread.sleep(2000);
-            TakesScreen.takeSnapShot(driver, "test-output//LoginPage//InvalidIDValidPWD.jpg");
+            Thread.sleep(700);
+            //loginPageObjects.VerifyAssertErrorInvalidData();
             Thread.sleep(2000);
             System.out.println("Login failed - Invalid UserID and Valid PWD");
 
@@ -134,6 +155,9 @@ public class LoginTest extends BasePage {
             loginPageObjects.setPassword(ReadProps.readAttr("Password1"));
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
+            Thread.sleep(700);
+
+            // loginPageObjects.VerifyAssertErrorInvalidData();
             Thread.sleep(2000);
             TakesScreen.takeSnapShot(driver, "test-output//LoginPage//ValidIDInvalidPWD.jpg");
             Thread.sleep(2000);
@@ -149,28 +173,35 @@ public class LoginTest extends BasePage {
             loginPageObjects.setPassword(ReadProps.readAttr("Password"));
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
-            Thread.sleep(10000);
+            Thread.sleep(8000);
             loginPageObjects.VerifyHomePage();
             TakesScreen.takeSnapShot(driver, "test-output//LoginPage//LoginSuccessful.jpg");
             System.out.println("Login Successfully - Valid UserID and Valid PWD");
-            Thread.sleep(2000);
+            Thread.sleep(5000);
 
 
             //TC 1.10 - Navigate to backward and forward
             driver.navigate().back();
+            Thread.sleep(500);
+
+            loginPageObjects.VerifyAssertBack();
             // Thread.sleep(4000);
             TakesScreen.takeSnapShot(driver, "test-output//LoginPage//NavigateBackward.jpg");
             Thread.sleep(4000);
             System.out.println("Navigated to backward successfully");
             driver.navigate().forward();
             Thread.sleep(6000);
+            loginPageObjects.VerifyHomePage();
             TakesScreen.takeSnapShot(driver, "test-output//LoginPage//NavigateForward.jpg");
             System.out.println("Navigated to forward successfully");
 
 
             //TC 1.11 - Logout
             loginPageObjects.ClickLogoutBtn();
-            Thread.sleep(6000);
+            Thread.sleep(4000);
+            loginPageObjects.VerifyAssertBack();
+            Thread.sleep(500);
+
             TakesScreen.takeSnapShot(driver, "test-output//LoginPage//Logout.jpg");
             System.out.println("Logging out successfully");
             Thread.sleep(2000);
@@ -181,7 +212,9 @@ public class LoginTest extends BasePage {
             loginPageObjects.setPassword(ReadProps.readAttr("AdminInvalidPwd"));
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
-            TakesScreen.takeSnapShot(driver,"test-output//LoginPage//AdminInvalidIDInvalidPWD.jpg");
+            Thread.sleep(500);
+
+            TakesScreen.takeSnapShot(driver, "test-output//LoginPage//AdminInvalidIDInvalidPWD.jpg");
             Thread.sleep(2000);
             loginPageObjects.ClearUserID();
             Thread.sleep(2000);
@@ -196,7 +229,7 @@ public class LoginTest extends BasePage {
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
             Thread.sleep(2000);
-            TakesScreen.takeSnapShot(driver,"test-output//LoginPage//AdminInvalidIDValidPWD.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//LoginPage//AdminInvalidIDValidPWD.jpg");
             Thread.sleep(2000);
             loginPageObjects.ClearUserID();
             Thread.sleep(2000);
@@ -213,12 +246,11 @@ public class LoginTest extends BasePage {
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
             Thread.sleep(2000);
-            TakesScreen.takeSnapShot(driver,"test-output//LoginPage//AdminValidIDInvalidPWD.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//LoginPage//AdminValidIDInvalidPWD.jpg");
             Thread.sleep(2000);
             System.out.println("Login failed - Valid UserID and invalid PWD");
             driver.navigate().refresh();
             Thread.sleep(3000);
-
 
 
             //TC 11.1 Admin Role Login with valid user-id and valid password
@@ -240,7 +272,7 @@ public class LoginTest extends BasePage {
             loginPageObjects.setPassword(ReadProps.readAttr("SupervisorInvalidPwd"));
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
-            TakesScreen.takeSnapShot(driver,"test-output//LoginPage//SupervisorInvalidIDInvalidPWD.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//LoginPage//SupervisorInvalidIDInvalidPWD.jpg");
             Thread.sleep(2000);
             loginPageObjects.ClearUserID();
             Thread.sleep(2000);
@@ -255,7 +287,7 @@ public class LoginTest extends BasePage {
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
             Thread.sleep(2000);
-            TakesScreen.takeSnapShot(driver,"test-output//LoginPage//SupervisorInvalidIDValidPWD.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//LoginPage//SupervisorInvalidIDValidPWD.jpg");
             Thread.sleep(2000);
             loginPageObjects.ClearUserID();
             Thread.sleep(2000);
@@ -272,7 +304,7 @@ public class LoginTest extends BasePage {
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
             Thread.sleep(2000);
-            TakesScreen.takeSnapShot(driver,"test-output//LoginPage//SupervisorValidIDInvalidPWD.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//LoginPage//SupervisorValidIDInvalidPWD.jpg");
             Thread.sleep(2000);
             System.out.println("Login failed - Valid UserID and invalid PWD");
             driver.navigate().refresh();
@@ -296,7 +328,7 @@ public class LoginTest extends BasePage {
             loginPageObjects.setPassword(ReadProps.readAttr("OperatorInvalidPwd"));
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
-            TakesScreen.takeSnapShot(driver,"test-output//LoginPage//OperatorInvalidIDInvalidPWD.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//LoginPage//OperatorInvalidIDInvalidPWD.jpg");
             Thread.sleep(2000);
             loginPageObjects.ClearUserID();
             Thread.sleep(2000);
@@ -311,7 +343,7 @@ public class LoginTest extends BasePage {
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
             Thread.sleep(2000);
-            TakesScreen.takeSnapShot(driver,"test-output//LoginPage//OperatorInvalidIDValidPWD.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//LoginPage//OperatorInvalidIDValidPWD.jpg");
             Thread.sleep(2000);
             loginPageObjects.ClearUserID();
             Thread.sleep(2000);
@@ -328,12 +360,11 @@ public class LoginTest extends BasePage {
             Thread.sleep(2000);
             loginPageObjects.clickLoginButton();
             Thread.sleep(2000);
-            TakesScreen.takeSnapShot(driver,"test-output//LoginPage//OperatorValidIDInvalidPWD.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//LoginPage//OperatorValidIDInvalidPWD.jpg");
             Thread.sleep(2000);
             System.out.println("Login failed - Valid UserID and invalid PWD");
             driver.navigate().refresh();
             Thread.sleep(3000);
-
 
 
             //TC 11.13 Operator ROle Login with Valid ID and PWD
@@ -348,14 +379,13 @@ public class LoginTest extends BasePage {
             loginPageObjects.ClickLogoutBtn();
             Thread.sleep(4000);
 
+
             driver.close();
+            loginPageObjects.SoftAssertAll();
+            Thread.sleep(4000);
 
 
-
-
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             test.log(status.FAIL, e);
         }
     }

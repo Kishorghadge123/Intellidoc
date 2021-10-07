@@ -1,15 +1,15 @@
 package Tests;
 
-        import Base.BasePage;
-        import Pages.DocumentPage;
-        import Utilities.ReadProps;
-        import Utilities.TakesScreen;
-        import org.openqa.selenium.JavascriptExecutor;
-        import org.testng.annotations.Test;
+import Base.BasePage;
+import Pages.DocumentPage;
+import Utilities.ReadProps;
+import Utilities.TakesScreen;
+import org.openqa.selenium.JavascriptExecutor;
+import org.testng.annotations.Test;
 
-        import java.awt.*;
-        import java.awt.event.KeyEvent;
-        import java.io.IOException;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 public class DocumentTest extends BasePage {
 
@@ -63,21 +63,21 @@ public class DocumentTest extends BasePage {
             Thread.sleep(4000);
             TakesScreen.takeSnapShot(driver, "test-output//Document//PanelExpanded.jpg");
             Thread.sleep(3000);
-            DocPageObj.ClickClearEmail();
+           /* DocPageObj.ClickClearEmail();
             Thread.sleep(2000);
             TakesScreen.takeSnapShot(driver, "test-output//Document//EmailCleared.jpg");
             Thread.sleep(3000);
             DocPageObj.ChangeChangeEmail(ReadProps.readAttr("ChangeEmail"));
             Thread.sleep(3000);
             TakesScreen.takeSnapShot(driver, "test-output//Document//NewEmailEntered.jpg");
-            Thread.sleep(3000);
+            Thread.sleep(3000);*/
 
             DocPageObj.ClickCancelDoc2();
             Thread.sleep(4000);
             TakesScreen.takeSnapShot(driver, "test-output//Document//CancelUpdate.jpg");
             Thread.sleep(3000);
-            DocPageObj.ClickDiscardUpdate();
-            Thread.sleep(4000);
+            // DocPageObj.ClickDiscardUpdate();
+            //Thread.sleep(4000);
             DocPageObj.ClickClearSearch();
             Thread.sleep(4000);
 
@@ -107,7 +107,7 @@ public class DocumentTest extends BasePage {
             r.keyPress(KeyEvent.VK_ESCAPE);
             Thread.sleep(3000);
             DocPageObj.ClickFilterDoc();
-            Thread.sleep(3000);
+            Thread.sleep(4000);
             DocPageObj.ClickCancelFilterSearch();
             Thread.sleep(3000);
             r.keyPress(KeyEvent.VK_ESCAPE);
@@ -190,7 +190,6 @@ public class DocumentTest extends BasePage {
             Thread.sleep(4000);
 
 
-
             // Anticlockwise , clockwise , Next Page , Previous Page
             DocPageObj.ClickSearchBox(ReadProps.readAttr("SearchDocumentForMorePages"));
             Thread.sleep(2000);
@@ -203,13 +202,13 @@ public class DocumentTest extends BasePage {
 
 
             //WebElement element = driver.findElement(By.xpath("//*[@id='canvas']"));
-          //  Actions act = new Actions(driver);
-          //  act.moveToElement(element).perform();
-          //  System.out.println("Mouse hover worked for document icon");
+            //  Actions act = new Actions(driver);
+            //  act.moveToElement(element).perform();
+            //  System.out.println("Mouse hover worked for document icon");
 
             //AntiClockwise
-           // WebDriverWait wait = new WebDriverWait(driver,60);
-          //  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='rotate_left']/span[1]/i")));
+            // WebDriverWait wait = new WebDriverWait(driver,60);
+            //  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='rotate_left']/span[1]/i")));
             TakesScreen.takeSnapShot(driver, "test-output//Document//OpenDocument.jpg");
             DocPageObj.ClickAntiWiseIcon();
             Thread.sleep(3000);
@@ -220,7 +219,6 @@ public class DocumentTest extends BasePage {
             DocPageObj.ClickClockWiseIcon();
             Thread.sleep(3000);
             TakesScreen.takeSnapShot(driver, "test-output//Document//ClockWiseIcon.jpg");
-
 
 
             //Zoom In
@@ -241,7 +239,7 @@ public class DocumentTest extends BasePage {
 
             //Navigate Back
             DocPageObj.ClickNvgtLft();
-            Thread.sleep(3000);
+            Thread.sleep(5000);
             TakesScreen.takeSnapShot(driver, "test-output//Document//PreviousPage.jpg");
 
             driver.close();

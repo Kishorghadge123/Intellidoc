@@ -1,18 +1,18 @@
 package Tests;
 
 
-        import Base.BasePage;
-        import Pages.ForgetPwdPage;
-        import Pages.LoginPage;
-        import Utilities.ReadProps;
-        import Utilities.TakesScreen;
-        import org.openqa.selenium.By;
-        import org.openqa.selenium.WebDriver;
-        import org.openqa.selenium.chrome.ChromeDriver;
-        import org.testng.Assert;
-        import org.testng.annotations.Test;
+import Base.BasePage;
+import Pages.ForgetPwdPage;
+import Pages.LoginPage;
+import Utilities.ReadProps;
+import Utilities.TakesScreen;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-        import java.io.IOException;
+import java.io.IOException;
 
 public class ForgetPwdTest extends BasePage {
 
@@ -87,8 +87,6 @@ public class ForgetPwdTest extends BasePage {
             System.out.println("User is inactive. Please contact Administration");
             Thread.sleep(2000);
             driver.close();
-
-
 
 
         } catch (Exception e) {

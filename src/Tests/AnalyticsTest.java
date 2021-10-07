@@ -15,9 +15,9 @@ public class AnalyticsTest extends BasePage {
     @Test
     public void AnalyticsFlow() throws InterruptedException, IOException {
         try {
-         BasePage.LoginTest();
+            BasePage.LoginTest();
             //Robot r = new Robot();
-            Thread.sleep(4000);
+            Thread.sleep(8000);
             AnalyticsPage AnalyticsPageObj = new AnalyticsPage(driver);
             test.log(status.INFO, "TestInformation");
             test.log(status.PASS, "TestPassed");
@@ -27,20 +27,20 @@ public class AnalyticsTest extends BasePage {
 
 
             //Organization Statistics
-          AnalyticsPageObj.ClickOrganizationArrow();
+            AnalyticsPageObj.ClickOrganizationArrow();
             Thread.sleep(2000);
             AnalyticsPageObj.ClickOrganizationArrow();
             Thread.sleep(2000);
             AnalyticsPageObj.HoverTotalUser();
             Thread.sleep(3000);
-            TakesScreen.takeSnapShot(driver,"test-output//Analytics//HoverTotalUser.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//Analytics//HoverTotalUser.jpg");
             AnalyticsPageObj.HoverStructureProcess();
             Thread.sleep(2000);
             AnalyticsPageObj.HoverStructureReady();
             Thread.sleep(2000);
             AnalyticsPageObj.HoverStructureRejected();
             Thread.sleep(2000);
-            TakesScreen.takeSnapShot(driver,"test-output//Analytics//HoverProgressbar.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//Analytics//HoverProgressbar.jpg");
             AnalyticsPageObj.ClickOrganizationArrow();
             Thread.sleep(2000);
 
@@ -49,7 +49,7 @@ public class AnalyticsTest extends BasePage {
             Thread.sleep(2000);
             AnalyticsPageObj.ClickSelectProject();
             Thread.sleep(4000);
-            TakesScreen.takeSnapShot(driver,"test-output//Analytics//ProjectSelect.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//Analytics//ProjectSelect.jpg");
             AnalyticsPageObj.ClickSelectDropDown();
             Thread.sleep(2000);
             AnalyticsPageObj.ClickSelectOverall();
@@ -58,7 +58,7 @@ public class AnalyticsTest extends BasePage {
             Thread.sleep(2000);
             AnalyticsPageObj.ClickSelectMonthly();
             Thread.sleep(2000);
-            TakesScreen.takeSnapShot(driver,"test-output//Analytics//MonthlyStatus.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//Analytics//MonthlyStatus.jpg");
             AnalyticsPageObj.ClickSelectDropDown();
             Thread.sleep(2000);
             AnalyticsPageObj.ClickSelectWeekly();
@@ -69,12 +69,12 @@ public class AnalyticsTest extends BasePage {
             Thread.sleep(2000);
             AnalyticsPageObj.HoverTotalDocument();
             Thread.sleep(3000);
-            TakesScreen.takeSnapShot(driver,"test-output//Analytics//HoverTotalDocument.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//Analytics//HoverTotalDocument.jpg");
             AnalyticsPageObj.ClickDocument();
             Thread.sleep(5000);
             AnalyticsPageObj.ClickReceived();
             Thread.sleep(5000);
-            TakesScreen.takeSnapShot(driver,"test-output//Analytics//SortReceived.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//Analytics//SortReceived.jpg");
             AnalyticsPageObj.ClickLastPage();
             Thread.sleep(2000);
             AnalyticsPageObj.ClickFirstPage();
@@ -83,13 +83,13 @@ public class AnalyticsTest extends BasePage {
             Thread.sleep(2000);
             AnalyticsPageObj.ClickPreviousPage();
             Thread.sleep(2000);
-            TakesScreen.takeSnapShot(driver,"test-output//Analytics//PreviousPage.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//Analytics//PreviousPage.jpg");
             AnalyticsPageObj.ClickDocumentManual();
             Thread.sleep(3000);
             AnalyticsPageObj.ClickReceivedManual();
             Thread.sleep(3000);
             AnalyticsPageObj.ClickProjectArrow();
-            Thread.sleep(3000);
+            Thread.sleep(5000);
             driver.close();
 
         } catch (Exception e) {

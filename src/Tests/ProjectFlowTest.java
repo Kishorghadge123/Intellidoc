@@ -1,4 +1,5 @@
 package Tests;
+
 import Base.BasePage;
 import Pages.DatasetPage;
 import Pages.ProjectPage;
@@ -18,8 +19,7 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 
-public class ProjectFlowTest extends BasePage
-{
+public class ProjectFlowTest extends BasePage {
 
     @Test
     public void ProjectFlow() throws InterruptedException, IOException {
@@ -39,7 +39,7 @@ public class ProjectFlowTest extends BasePage
             ProjectPageObj.ClickArrowRight();
             Thread.sleep(3000);
             ProjectPageObj.ClickArrowLeft();
-           Thread.sleep(3000);
+            Thread.sleep(3000);
 
 
             //TC 5.2 Create new project with Blank information and also verify Create button
@@ -47,12 +47,14 @@ public class ProjectFlowTest extends BasePage
             Thread.sleep(4000);
             ProjectPageObj.ClickOnCreateProjectBtn();
             Thread.sleep(4000);
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0,10000)", "");
+            Thread.sleep(4000);
             ProjectPageObj.ClickonCreate();
-           // ProjectPageObj.VerifyAssertForError();
-            TakesScreen.takeSnapShot(driver, "test-output//ProjectTest//ProjectCreatePageEmpty.jpg");
+            ProjectPageObj.VerifyAssertForError();
+            TakesScreen.takeSnapShot(driver, "test-output//ProjectTest//ProjectCreateBlank.jpg");
             Thread.sleep(4000);
             System.out.println("Please check form data and role(s) cannot be empty");
-
 
 
             //TC 5.3 Verify Next button with Blank information
@@ -60,8 +62,9 @@ public class ProjectFlowTest extends BasePage
             ProjectPageObj.ClickOnProjectBtn();
             Thread.sleep(4000);
             ProjectPageObj.ClickOnCreateProjectBtn();
-           Thread.sleep(4000);
+            Thread.sleep(4000);
             ProjectPageObj.ClickNextPage();
+            TakesScreen.takeSnapShot(driver, "test-output//ProjectTest//ProjectCreateBlankNext.jpg");
             Thread.sleep(4000);
 
             //Test 5.4 Verify Cancel button with Blank information
@@ -70,235 +73,14 @@ public class ProjectFlowTest extends BasePage
             ProjectPageObj.ClickOnCreateProjectBtn();
             Thread.sleep(4000);
             ProjectPageObj.ClickonCancelOnProject();
-           Thread.sleep(4000);
-
-            //Test 5.5  Create project with Project information but blank Templte,Role,Datasets,Document Ingestion Channels)
-
-            ProjectPageObj.ClickOnCreateProjectBtn();
-           Thread.sleep(4000);
-            ProjectPageObj.ClickOnProjectNameBtn(ReadProps.readAttr("PName"));
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnLeadBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnLeadBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnStartDateBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnStartDateBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnEndDate();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectEndDate();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnDocumentStructureBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnDocumentStructureBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnProcessingEngineBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnProcessingEngineBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnStraightThroughProcessBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnDocumentScoreBtn(ReadProps.readAttr("Score"));
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnStatusBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnDocumentAutoAssignBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickonCreate();
-            TakesScreen.takeSnapShot(driver, "test-output//ProjectTest//ProjectCreateTemplateEmpty.jpg");
-         ProjectPageObj.VerifyAsserForTemplate();
-         Thread.sleep(4000);
-            System.out.println("Please add the template before creating the project.");
             Thread.sleep(4000);
 
+            //Test 5.5  Create project with Project information without Template and Role
 
-
-            //Test 5.6 Create project with Data and Role but without adding User
-            ProjectPageObj.ClickOnProjectBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnCreateProjectBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnProjectNameBtn(ReadProps.readAttr("PName"));
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnLeadBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnLeadBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnStartDateBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnStartDateBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnEndDate();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectEndDate();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnDocumentStructureBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnDocumentStructureBtn();
-           Thread.sleep(4000);
-            ProjectPageObj.ClickOnProcessingEngineBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnProcessingEngineBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnStraightThroughProcessBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnDocumentScoreBtn(ReadProps.readAttr("Score"));
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnStatusBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnDocumentAutoAssignBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnRolesBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnAddRoleBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnSelectRoleBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickonCreate();
-            TakesScreen.takeSnapShot(driver, "test-output//ProjectTest//CreateProjectRolesUserEmpty.jpg");
-           // ProjectPageObj.VerifyAsertForUser();
-            Thread.sleep(4000);
-            System.out.println("Please add the template before creating the project.");
-            Thread.sleep(4000);
-
-
-            //TC 5.7  Create project with Role information but blank Project,Templte,Datasets,Document Ingestion Channels
-
-            ProjectPageObj.ClickOnProjectBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnCreateProjectBtn();
-            Thread.sleep(4000);
-            //ProjectPageObj.ClickOnProjectNameBtn(ReadProps.readAttr("PName"));
-            //Thread.sleep(4000);
-            ProjectPageObj.ClickOnRolesBtn();
-           Thread.sleep(4000);
-            ProjectPageObj.ClickOnAddRoleBtn();
-           Thread.sleep(4000);
-            ProjectPageObj.ClickOnSelectRoleBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnAddUserBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnSelectUserBtn();
-            Thread.sleep(4000);
-            r.keyPress(KeyEvent.VK_ESCAPE);
-            ProjectPageObj.ClickonCreate();
-         //ProjectPageObj.VerifyAssertForData();
-         TakesScreen.takeSnapShot(driver, "test-output//ProjectTest//ProjectCreateDataEmpty.jpg");
-            System.out.println("Please add the attributes before creating the project.");
-            Thread.sleep(3000);
-
-
-            //Create Project with Project data and Template only
-            ProjectPageObj.ClickOnProjectBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnCreateProjectBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnProjectNameBtn(ReadProps.readAttr("PName"));
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnLeadBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnLeadBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnStartDateBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnStartDateBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnEndDate();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectEndDate();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnDocumentStructureBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnDocumentStructureBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnProcessingEngineBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnProcessingEngineBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnStraightThroughProcessBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnDocumentScoreBtn(ReadProps.readAttr("Score"));
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnStatusBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnDocumentAutoAssignBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnAddTemplateBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnTemplateBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickonCreate();
-            TakesScreen.takeSnapShot(driver, "test-output//ProjectTest//ProjectCreateRoleEmpty.jpg");
-            Thread.sleep(4000);
-
-
-
-
-
-            //Create project with project data, role,template with Exixting Project Name
-            ProjectPageObj.ClickOnProjectBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnCreateProjectBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnProjectNameBtn(ReadProps.readAttr("PName"));
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnLeadBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnLeadBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnStartDateBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnStartDateBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnEndDate();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectEndDate();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnDocumentStructureBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnDocumentStructureBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnProcessingEngineBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.SelectOnProcessingEngineBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnStraightThroughProcessBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnDocumentScoreBtn(ReadProps.readAttr("Score"));
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnStatusBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnDocumentAutoAssignBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnAddTemplateBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnTemplateBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnRolesBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnAddRoleBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnSelectRoleBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnAddUserBtn();
-            Thread.sleep(4000);
-            ProjectPageObj.ClickOnSelectUserBtn();
-            Thread.sleep(4000);
-            r.keyPress(KeyEvent.VK_ESCAPE);
-            ProjectPageObj.ClickonCreate();
-            TakesScreen.takeSnapShot(driver, "test-output//ProjectTest//ProjectCreateExistingFile.jpg");
-            Thread.sleep(4000);
-
-
-            //TC Create Project with Prject Data, Template, Role
-            ProjectPageObj.ClickOnProjectBtn();
-            Thread.sleep(4000);
             ProjectPageObj.ClickOnCreateProjectBtn();
             Thread.sleep(4000);
             ProjectPageObj.ClickOnProjectNameBtn(ReadProps.readAttr("PuniqueName"));
-            Thread.sleep(4000);
+            Thread.sleep(6000);
             ProjectPageObj.ClickOnLeadBtn();
             Thread.sleep(4000);
             ProjectPageObj.SelectOnLeadBtn();
@@ -327,9 +109,50 @@ public class ProjectFlowTest extends BasePage
             Thread.sleep(4000);
             ProjectPageObj.ClickOnDocumentAutoAssignBtn();
             Thread.sleep(4000);
+            ProjectPageObj.ClickonCreate();
+            TakesScreen.takeSnapShot(driver, "test-output//ProjectTest//ProjectCreateTemplateRoleEmpty.jpg");
+            ProjectPageObj.VerifyAsserForTemplate();
+            Thread.sleep(4000);
+            System.out.println("Please add the template before creating the project.");
+            Thread.sleep(4000);
+
+
+            //Test 5.6 Create project without Role
             ProjectPageObj.ClickOnAddTemplateBtn();
             Thread.sleep(4000);
             ProjectPageObj.ClickOnTemplateBtn();
+            Thread.sleep(4000);
+            ProjectPageObj.ClickonCreate();
+            ProjectPageObj.VerifyAssertForRole();
+            TakesScreen.takeSnapShot(driver, "test-output//ProjectTest//CreateProjectRolesUserEmpty.jpg");
+            Thread.sleep(4000);
+
+            //Test 5.6 Create project
+          /*   ProjectPageObj.ClickOnRolesBtn();
+            Thread.sleep(4000);
+            ProjectPageObj.ClickOnAddRoleBtn();
+            Thread.sleep(4000);
+            ProjectPageObj.ClickOnSelectRoleBtn();
+            Thread.sleep(4000);
+            ProjectPageObj.ClickOnAddUserBtn();
+            Thread.sleep(4000);
+            ProjectPageObj.ClickOnSelectUserBtn();
+            Thread.sleep(4000);
+            r.keyPress(KeyEvent.VK_ESCAPE);
+            Thread.sleep(4000);
+            r.keyPress(KeyEvent.VK_ESCAPE);
+            ProjectPageObj.ClickonCreate();
+            TakesScreen.takeSnapShot(driver, "test-output//ProjectTest//CreatedProject.jpg");
+           // ProjectPageObj.VerifyAsertForUser();
+            Thread.sleep(4000);
+            System.out.println("Project Created");
+            Thread.sleep(4000);*/
+
+
+            //TC 5.7  Create project only with Role information
+            ProjectPageObj.ClickOnProjectBtn();
+            Thread.sleep(4000);
+            ProjectPageObj.ClickOnCreateProjectBtn();
             Thread.sleep(4000);
             ProjectPageObj.ClickOnRolesBtn();
             Thread.sleep(4000);
@@ -343,9 +166,10 @@ public class ProjectFlowTest extends BasePage
             Thread.sleep(4000);
             r.keyPress(KeyEvent.VK_ESCAPE);
             ProjectPageObj.ClickonCreate();
-            Thread.sleep(4000);
-            TakesScreen.takeSnapShot(driver, "test-output//ProjectTest//ProjectCreate.jpg");
-            Thread.sleep(4000);
+            //ProjectPageObj.VerifyAssertForData();
+            TakesScreen.takeSnapShot(driver, "test-output//ProjectTest//ProjectCreateOnlyRole.jpg");
+            System.out.println("Please add the attributes before creating the project.");
+            Thread.sleep(3000);
 
 
             //Items Per Page

@@ -18,13 +18,13 @@ public class AnalyticsPage {
     By Structure_Rejected=By.xpath("//body/app-root[1]/div[1]/app-landing[1]/div[1]/div[1]/main[1]/div[1]/app-analytics[1]/div[1]/mat-accordion[1]/mat-expansion-panel[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[3]");
     By ProjectDownarrow=By.xpath("//span[@class='mat-expansion-indicator ng-tns-c157-8 ng-trigger ng-trigger-indicatorRotate ng-star-inserted']");
     By SearchProject=By.xpath("//input[@placeholder='Search By Project']");
-    By SelectProject=By.xpath("//span[contains(text(),'aws s-3')]");
+    By SelectProject=By.xpath("//span[contains(text(),'Blue Cross Blue Shield')]");
     By SelectDropDown= By.xpath("//body[1]/app-root[1]/div[1]/app-landing[1]/div[1]/div[1]/main[1]/div[1]/app-analytics[1]/div[2]/mat-accordion[1]/mat-expansion-panel[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/mat-form-field[1]/div[1]/div[1]/div[1]/mat-select[1]");
     By SelectMonthly = By.xpath("//span[contains(text(),'Monthly')]");
     By SelectWeekly = By.xpath("//span[contains(text(),'Weekly')]");
     By SelectDaily = By.xpath("//span[contains(text(),'Daily')]");
     By SelectOverall = By.xpath("//body/div[1]/div[2]/div[1]/div[1]/div[1]/mat-option[4]/span[1]");
-    By TotalDocument = By.xpath("//div[@class='white_bg rounded_5px box_shadow px-2 py-2 h-100']");
+    By TotalDocument = By.xpath("//div[@class='white_bg rounded_5px box_shadow px-2 py-2 h-100 d-flex-center flex-column']");
     By Document = By.xpath("//div[@class='mat-sort-header-content ng-tns-c166-13']");
     By Received = By.xpath("//div[@class='mat-sort-header-content ng-tns-c166-14']");
     By LastPage = By.xpath("//button[@class='mat-focus-indicator mat-tooltip-trigger mat-paginator-navigation-last mat-icon-button mat-button-base ng-star-inserted']");

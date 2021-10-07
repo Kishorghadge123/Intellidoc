@@ -18,14 +18,14 @@ public class ProjectPage {
 
     //Define Project
     By ProjectBtn = By.xpath("//i[@class='mat-tooltip-trigger fa fa-briefcase m-0 side-icon ng-star-inserted']");
-    By CreateProject = By.xpath("//span[contains(text(),'Create Project')]");
+    By CreateProject = By.xpath("//span[contains(text(),' Create Project ')]");
     By ProjectName = By.xpath("//input[@formcontrolname='project']");
     By Lead = By.xpath("//*[@formcontrolname='lead']");
-    By SelectLead = By.xpath("//span[contains(text(),'QA1@email.com')]");
+    By SelectLead = By.xpath("//span[contains(text(),'qa1@email.com')]");
     By ClickStartDate = By.cssSelector("button[aria-label='Open calendar'][tabindex='0']");
     // By ClickStartDate = By.xpath("//*[@id='cdk-step-content-1-0']/div/project-info-section/project-info/mat-card/form/div/div[3]/mat-form-field/div/div[1]/div[4]/mat-datepicker-toggle/button/span[1]/svg/path");
     By SelectStartDate = By.xpath("//div[contains(text(),'3')]");
-    By ClickEndDate= By.xpath("//body/app-root[1]/div[1]/app-landing[1]/div[1]/div[1]/main[1]/div[1]/app-create-project[1]/mat-horizontal-stepper[1]/div[2]/div[1]/div[1]/project-info-section[1]/project-info[1]/mat-card[1]/form[1]/div[1]/div[4]/mat-form-field[1]/div[1]/div[1]/div[4]/mat-datepicker-toggle[1]/button[1]/span[1]/*[1]");
+    By ClickEndDate= By.xpath("//body/app-root[1]/div[1]/app-landing[1]/div[1]/div[1]/main[1]/div[1]/app-create-project[1]/div[2]/div[1]/project-info-section[1]/project-info[1]/mat-card[1]/form[1]/div[1]/div[4]/mat-form-field[1]/div[1]/div[1]/div[4]/mat-datepicker-toggle[1]/button[1]/span[1]/*[1]");
     By SelectEndDate = By.xpath("//div[contains(text(),'25')]");
     By ClickDocumentStructure = By.xpath("//*[@formcontrolname='documentStructure']");
     By SelectDocumentStructure = By.xpath("//span[contains(text(),'Structured ')]");
@@ -37,13 +37,13 @@ public class ProjectPage {
     By DocumentAutoAssign = By.xpath("//*[@formcontrolname='autoAssignment']/label/div");
     // By ClickTemplate = By.xpath("//span[contains(text(),'Templates')]");
     By ClickAddTemplate = By.xpath("//span[contains(text(),'Add Template')]");
-    By SelectTemplate = By.xpath("//body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/button[5]");
+    By SelectTemplate = By.xpath("//button[contains(text(),'Template 1')]");
     // By DeleteTemplate = By.xpath("//mat-icon[contains(text(),'delete')]");
     By ClickRoles = By.xpath("//span[contains(text(),'Roles')]");
     By AddRole = By.xpath("//span[contains(text(),'Add Role')]");
-    By SelectRole = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/button[7]");
-    By AddUser = By.xpath("//body/app-root[1]/div[1]/app-landing[1]/div[1]/div[1]/main[1]/div[1]/app-create-project[1]/mat-horizontal-stepper[1]/div[2]/div[1]/div[1]/project-info-section[1]/mat-accordion[1]/project-roles[1]/mat-expansion-panel[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/button[1]/span[1]/mat-icon[1]");       //esc method
-    By SelectUser = By.xpath("//body/div[1]/div[2]/div[1]/div[1]/div[1]/mat-option[166]/mat-pseudo-checkbox[1]");
+    By SelectRole = By.xpath("//button[contains(text(),'AE Admin')]");
+    By AddUser = By.xpath("//button[@class='mat-focus-indicator disabled-font-color mat-icon-button mat-button-base primary-font-color']");       //esc method
+    By SelectUser = By.xpath("//span[contains(text(),'admin@test.com')]");
     By ClickDataset = By.xpath("//span[contains(text(),'Datasets')]");
     By AddDataset = By.xpath("//span[contains(text(),'Add Dataset')]");
    // By SelectData = By.xpath("//body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/button[4]");
@@ -68,7 +68,7 @@ public class ProjectPage {
     By RuleName = By.xpath("//body[1]/app-root[1]/div[1]/app-landing[1]/div[1]/div[1]/main[1]/div[1]/app-create-project[1]/mat-horizontal-stepper[1]/div[2]/div[2]/form[1]/div[1]/div[2]/mat-accordion[1]/mat-expansion-panel[2]/div[1]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/mat-form-field[1]/div[1]/div[1]/div[1]/input[1]");
     By DeleteRule = By.xpath("//mat-icon[contains(text(),'delete')]");
     By ClickCancelOnRuleWorkbench = By.xpath("//*[@id='cdk-step-content-0-1']/form/div/div[2]/div/button[3]/span[1]");
-    By CreateButton = By.xpath("//span[contains(text(),'Create')]");
+    By CreateButton = By.xpath("//body/app-root[1]/div[1]/app-landing[1]/div[1]/div[1]/main[1]/div[1]/app-create-project[1]/div[2]/div[1]/div[1]/button[1]/span[1]");
     //Project Homepage
     By ClickTableStructure = By.xpath("//*[@class='main']/div/app-project-management/div/div/div/ul/li[2]");
     By ClickGridStructure = By.xpath("//mat-icon[contains(text(),'grid_on')]");
@@ -87,10 +87,11 @@ public class ProjectPage {
     By FirstPage = By.xpath("//*[@aria-label='First page']");
     By CancelOnProject = By.xpath("//*[contains(text(),'Cancel')]");
 
-    By ErrorMsgDataRole = By.xpath("//span[contains(text(),'Please check form data and role(s) cannot be empty')]");
+    By ErrorMsgBlank = By.xpath("//span[contains(text(),'Please add the attributes before creating the project.')]");
     By ErrorMsgRoleUser = By.xpath("//span[contains(text(),'Please add the attributes before creating the project.')]");
     By ErrorMsgTemplate = By.xpath("//span[contains(text(),'Please add the template before creating the project.')]");
     By ErrorMsgData = By.xpath("//span[contains(text(),'Please add the attributes before creating the project.')]");
+    By ErrorMsgRole = By.xpath("//span[contains(text(),'Role(s) cannot be empty')]");
 
 
     public ProjectPage(WebDriver driver) {
@@ -179,13 +180,16 @@ public class ProjectPage {
         driver.findElement(SelectRole).click();
     }
 
+
+
     public void ClickOnAddUserBtn() {
         driver.findElement(AddUser).click();
     }
 
     public void ClickOnSelectUserBtn() {
         driver.findElement(SelectUser).click();
-    }       //esc method
+    }
+
 
     public void ClickOnDatasetBtn() {
         driver.findElement(ClickDataset).click();
@@ -339,8 +343,8 @@ public class ProjectPage {
 
     public void VerifyAssertForError() {
 
-        String actual_msg = driver.findElement(ErrorMsgDataRole).getText();
-        String expect = "Please check form data and role(s) cannot be empty";
+        String actual_msg = driver.findElement(ErrorMsgBlank).getText();
+        String expect = "Please add the attributes before creating the project.";
         Assert.assertEquals(actual_msg, expect);
     }
 
@@ -359,6 +363,11 @@ public class ProjectPage {
     public void VerifyAssertForData() {
         String actual_msg = driver.findElement(ErrorMsgData).getText();
         String expect = "Please check form data";
+        Assert.assertEquals(actual_msg, expect);
+    }
+    public void VerifyAssertForRole() {
+        String actual_msg = driver.findElement(ErrorMsgRole).getText();
+        String expect = "Role(s) cannot be empty";
         Assert.assertEquals(actual_msg, expect);
     }
 

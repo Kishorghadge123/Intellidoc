@@ -7,6 +7,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
+
+import javax.swing.*;
 
 public class TemplatePage {
     WebDriver driver = null;
@@ -21,6 +24,8 @@ public class TemplatePage {
     By CloseBtn = By.xpath("//*[@id='close-modal']/span[1]/mat-icon");
     By SearchTemplate = By.xpath("//*[@data-placeholder='Search']");
     By ExpandTemplate = By.xpath("//tbody/tr[1]/td[1]");
+    By ExpandTemplateMore = By.xpath("//td[contains(text(),'Demo-New2')]");
+
     By TemplateDataInfo = By.xpath("//td[contains(text(),'Template1')]");
     By TemplateDataInfo1 = By.xpath("//td[contains(text(),'Sample-page1')]");
     By TemplateDelete = By.xpath("//body[1]/app-root[1]/div[1]/app-landing[1]/div[1]/div[1]/main[1]/div[1]/app-new-training[1]/div[2]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[2]/td[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[6]/button[2]/span[1]/mat-icon[1]");
@@ -45,6 +50,7 @@ public class TemplatePage {
 
 
     //Methods
+    SoftAssert softAssert = new SoftAssert();
     public TemplatePage(WebDriver driver) {
         this.driver = driver;
     }
@@ -78,11 +84,14 @@ public class TemplatePage {
     }
 
     public void ClickOnSearchTemplate(String tName) {
-        driver.findElement(SearchTemplate).click();
+        driver.findElement(SearchTemplate).sendKeys(tName);
     }
 
     public void ClickOnExpandTemplate() {
         driver.findElement(ExpandTemplate).click();
+    }
+    public void ClickExpandMore(){
+        driver.findElement(ExpandTemplateMore).click();
     }
 
     public void ClickOnTemplateDataInfo() {
@@ -93,7 +102,7 @@ public class TemplatePage {
         String TemplateName[] = driver.findElement(ExpandTemplate).getText().split(" ");
         String ActualTemplate = TemplateName[1].trim();
         String ExpectedTemplate = "Demo-New1";
-        Assert.assertEquals(ActualTemplate, ExpectedTemplate);
+        softAssert.assertEquals(ActualTemplate, ExpectedTemplate);
 
     }
 
@@ -101,7 +110,7 @@ public class TemplatePage {
     {
         String ActualStaus = driver.findElement(TriningStatus).getText();
         String ExpectedStatus = "In Progress";
-        Assert.assertEquals(ActualStaus,ExpectedStatus);
+        softAssert.assertEquals(ActualStaus,ExpectedStatus);
     }
 
 
@@ -160,7 +169,7 @@ public class TemplatePage {
     public void AssertMap() {
         String MapError = driver.findElement(MapErrorMsg).getText();
         String ExpectedErrorMsg = "Please Select Portion Of Image";
-        Assert.assertEquals(MapError, ExpectedErrorMsg);
+        softAssert.assertEquals(MapError, ExpectedErrorMsg);
     }
 
     public void ClickSaveDraft()
@@ -188,6 +197,12 @@ public class TemplatePage {
     public void ClickOnTemplatemorepagesInfo()
     {
         driver.findElement(TemplateDataInfo1).click();
+    }
+
+    public void SoftAssertAll()
+    {
+        softAssert.assertAll();
+
     }
 
 }

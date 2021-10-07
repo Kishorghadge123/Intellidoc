@@ -13,7 +13,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -30,7 +32,6 @@ import java.util.concurrent.TimeoutException;
 public class TemplateTest extends BasePage {
 
 
-
     @Test
     public void TemplateFlow() throws InterruptedException, IOException {
 
@@ -43,12 +44,15 @@ public class TemplateTest extends BasePage {
             Thread.sleep(8000);
 
             TemplatePage TemplatePageObj = new TemplatePage(driver);
+            //WebDriverWait wait=new WebDriverWait(driver, 30);
+
             driver.manage().deleteAllCookies();
 
 
             test.log(status.INFO, "TestInformation");
             test.log(status.PASS, "TestPassed");
             System.out.println("Successfully logged in");
+
             Thread.sleep(8000);
 
 
@@ -98,14 +102,13 @@ public class TemplateTest extends BasePage {
             Thread.sleep(3000);
 
 
-
             // TC 1.4 - Create template with Unique name and choosen file
             TemplatePageObj.ClickOnUploadTemplateBtn();
             Thread.sleep(4000);
             TemplatePageObj.ClickOnTemplateName(ReadProps.readAttr("TNameUnique"));
             System.out.println("Template name entered");
             Thread.sleep(6000);
-            upload_file.sendKeys("C:\\Users\\juee.ningshetti\\OneDrive\\Desktop\\Template format\\Template1.jpg");
+            upload_file.sendKeys("C:\\Users\\juee.ningshetti\\IdeaProjects\\Intellidoc\\Files\\Template format\\Template1.jpg");
             System.out.println("File choosen");
             Thread.sleep(3000);
             // TakesScreen.takeSnapShot(driver, "test-output//Templates//CreateTemplateDetails.jpg");
@@ -118,7 +121,6 @@ public class TemplateTest extends BasePage {
             System.out.println("Template created successfully");
             TemplatePageObj.AssertTrainingStatus();
             Thread.sleep(4000);
-
 
 
             // // TC 1.5- Search template
@@ -174,7 +176,8 @@ public class TemplateTest extends BasePage {
 
 
             // TC 1.5- Delete created template
-
+            TemplatePageObj.ClickOnSearchTemplate(ReadProps.readAttr("TNameUnique"));
+            Thread.sleep(4000);
             TemplatePageObj.ClickOnExpandTemplate();
             Thread.sleep(4000);
             TemplatePageObj.DeleteTemplate();
@@ -182,6 +185,7 @@ public class TemplateTest extends BasePage {
             TakesScreen.takeSnapShot(driver, "test-output//Templates//DeleteTemplateWindw.jpg");
             TemplatePageObj.ConfirmDeleteTemplate();
             Thread.sleep(6000);
+            Thread.sleep(4000);
 
             //Create Template with more page
             driver.navigate().refresh();
@@ -193,36 +197,33 @@ public class TemplateTest extends BasePage {
             TemplatePageObj.ClickOnTemplateName(ReadProps.readAttr("TNameMorepages"));
             Thread.sleep(6000);
             System.out.println("Template name entered");
-            WebElement upload_file1 = driver.findElement(By.xpath("//input[@class='ng-tns-c200-2']"));
-            upload_file1.sendKeys("C:\\Users\\juee.ningshetti\\OneDrive\\Desktop\\Template format\\Sample.pdf");
+            WebElement upload_file1 = driver.findElement(By.xpath("//*[@id='faxDetailModal']/div/div/div[2]/div/form/div/input"));
+            upload_file1.sendKeys("C:\\Users\\juee.ningshetti\\IdeaProjects\\Intellidoc\\Files\\Template format\\Sample.pdf");
             System.out.println("File choosen");
             Thread.sleep(6000);
             // TakesScreen.takeSnapShot(driver, "test-output//Templates//CreateTemplateDetails.jpg");
             TemplatePageObj.ClickCreateTemplate();
-            Thread.sleep(10000);
+            Thread.sleep(15000);
             TakesScreen.takeSnapShot(driver, "test-output//Templates//TemplateCreated.jpg");
             System.out.println("Template created successfully");
             TemplatePageObj.ClickOnSearchTemplate(ReadProps.readAttr("TNameMorepages"));
-            Thread.sleep(4000);
+            Thread.sleep(5000);
             TakesScreen.takeSnapShot(driver, "test-output//Templates//SearchTemplate.jpg");
-            Thread.sleep(3000);
             System.out.println("Search template");
-            TemplatePageObj.ClickOnExpandTemplate();
+            TemplatePageObj.ClickExpandMore();
             Thread.sleep(4000);
             TakesScreen.takeSnapShot(driver, "test-output//Templates//ExpandTemplate.jpg");
             System.out.println("Template expanded");
             TemplatePageObj.ClickOnTemplatemorepagesInfo();
             Thread.sleep(10000);
             TakesScreen.takeSnapShot(driver, "test-output//Templates//OpenTemplateFile.jpg");
-            //Thread.sleep(3000);
+            Thread.sleep(3000);
             System.out.println("Template open");
             TemplatePageObj.ClickOnZoomIn();
             Thread.sleep(3000);
             TakesScreen.takeSnapShot(driver, "test-output//Templates/ZoomInPages.jpg");
             TemplatePageObj.ClickOnZoomOut();
             Thread.sleep(3000);
-            TakesScreen.takeSnapShot(driver, "test-output//Templates/ZoomOutPages.jpg");
-
             TemplatePageObj.ClickNavigateNext();
             Thread.sleep(4000);
             TakesScreen.takeSnapShot(driver, "test-output//Templates/NextPage.jpg");
@@ -231,35 +232,39 @@ public class TemplateTest extends BasePage {
             TakesScreen.takeSnapShot(driver, "test-output//Templates/BackPage.jpg");
             TemplatePageObj.ClickCancelTraining();
             Thread.sleep(5000);
-            TemplatePageObj.ClickOnExpandTemplate();
+            TakesScreen.takeSnapShot(driver, "test-output//Templates/ZoomOutPages.jpg");
+            TemplatePageObj.ClickOnSearchTemplate(ReadProps.readAttr("TNameMorepages"));
+            Thread.sleep(5000);
+            TakesScreen.takeSnapShot(driver, "test-output//Templates//SearchTemplate.jpg");
+            Thread.sleep(3000);
+            System.out.println("Search template");
+            TemplatePageObj.ClickExpandMore();
             Thread.sleep(4000);
             TemplatePageObj.DeleteTemplate();
             Thread.sleep(4000);
-            TakesScreen.takeSnapShot(driver, "test-output//Templates//DeleteTemplateWindw.jpg");
             TemplatePageObj.ConfirmDeleteTemplate();
             Thread.sleep(6000);
-            TemplatePageObj.ClickOnExpandTemplate();
-            Thread.sleep(4000);
             TemplatePageObj.DeleteTemplate();
             Thread.sleep(4000);
-            TakesScreen.takeSnapShot(driver, "test-output//Templates//DeleteTemplateWindw.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//Templates/DeletePage.jpg");
             TemplatePageObj.ConfirmDeleteTemplate();
             Thread.sleep(6000);
-            TemplatePageObj.ClickOnExpandTemplate();
-            Thread.sleep(4000);
+            TakesScreen.takeSnapShot(driver, "test-output//Templates/DeletePage.jpg");
             TemplatePageObj.DeleteTemplate();
             Thread.sleep(4000);
-            TakesScreen.takeSnapShot(driver, "test-output//Templates//DeleteTemplateWindw.jpg");
             TemplatePageObj.ConfirmDeleteTemplate();
             Thread.sleep(6000);
-            TemplatePageObj.ClickOnExpandTemplate();
-            Thread.sleep(4000);
             TemplatePageObj.DeleteTemplate();
             Thread.sleep(4000);
-            TakesScreen.takeSnapShot(driver, "test-output//Templates//DeleteTemplateWindw.jpg");
             TemplatePageObj.ConfirmDeleteTemplate();
             Thread.sleep(6000);
+
+
+            TemplatePageObj.SoftAssertAll();
+            Thread.sleep(4000);
+
             driver.close();
+
 
         } catch (Exception e) {
             //test.log(status.FAIL, e);
@@ -268,5 +273,5 @@ public class TemplateTest extends BasePage {
 
     }
 
-    }
+}
 

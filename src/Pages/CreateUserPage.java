@@ -1,8 +1,10 @@
 package Pages;
 import Base.BasePage;
+import Tests.LoginTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 
 public class CreateUserPage extends BasePage
@@ -20,9 +22,18 @@ public class CreateUserPage extends BasePage
     By DisableUser = By.xpath("//div[@class='mat-slide-toggle-thumb']");
     By UpdateUser  = By.xpath("//button[@class='mat-focus-indicator float-right button-cls mat-raised-button mat-button-base mat-primary']");
     By Password  = By.xpath("//body[1]/app-root[1]/div[1]/app-landing[1]/div[1]/div[1]/main[1]/div[1]/app-create-edit-user[1]/div[1]/form[1]/mat-card[1]/div[1]/div[3]/mat-form-field[1]/div[1]/div[1]/div[3]/input[1]");
-    By UserName = By.xpath("//td[contains(text(),' AutoSampleBB ')]");
+    By PlatformUser = By.xpath("//td[contains(text(),' AutoSampleBB ')]");
+    By UserUpdated = By.xpath("//td[contains(text(),' AutoSampleUpdate ')]");
+    By AdminUser = By.xpath("//td[contains(text(),' AutoAdminUser ')]");
+
     By UpdatedTime = By.xpath("//tbody[@role='rowgroup']/tr[1]/td[3]");
     By CreatedTime = By.xpath("//tbody[@role='rowgroup']/tr[1]/td[4]");
+    By logout = By.xpath("//span[@mattooltip='Logout']");
+    By username = By.xpath("//input[@formcontrolname='userName']");
+    By password = By.xpath("//input[@formcontrolname='password']");
+    By loginBtn = By.xpath("//button[@type='submit']");
+    By BlnkErrMsg = By.xpath(("//span[contains(text(),'Please Check Form Detail ...!')]"));
+    By ExistErrMsg = By.xpath("//span[contains(text(),'User exists with email sampleemail@email.com')]");
 
 
 
@@ -37,36 +48,81 @@ public class CreateUserPage extends BasePage
     public void ClickActiveUser(){driver.findElement(ActiveUser).click();}
     public void ClickCancelBtn(){driver.findElement(CancelBtn).click();}
     public  void SearchCreatedUser(String text){driver.findElement(SearchBtn).sendKeys(text);}
-    public  void SelectSearchedUser(){driver.findElement(UserName).click();}
+    public  void SelectSearchedUser(){driver.findElement(PlatformUser).click();}
+    public  void SelectSearchedAdminUser(){driver.findElement(AdminUser).click();}
     public void ClickDisableUser(){driver.findElement(DisableUser).click();}
     public void ClickEnableUser(){driver.findElement(DisableUser).click();}
     public void ClickUpdateUser(){driver.findElement(UpdateUser).click();}
     public void ClicktoClearName(){driver.findElement(EnterUserName).clear();}
     public  void ClearPassword(){driver.findElement(Password).clear();}
     public void EnterPassword(String text){driver.findElement(Password).sendKeys(text);}
+
+    SoftAssert softAssert = new SoftAssert();
+
     public void CreateUserAssert() {
-        String User[] = driver.findElement(UserName).getText().split(" ");
+        String User[] = driver.findElement(PlatformUser).getText().split(" ");
         String ActualUser = User[1].trim();
         String ExpectedUser = "AutoSampleBB";
-        Assert.assertEquals(ActualUser, ExpectedUser);
+        softAssert.assertEquals(ActualUser, ExpectedUser);
     }
 
 
-    public void TimeAssert()
+    public void CreateTimeAssert()
     {
         String UpdateTime=driver.findElement(UpdatedTime).getText();
         String CreateTime=driver.findElement(CreatedTime).getText();
-        Assert.assertEquals(UpdateTime, CreateTime);
+        softAssert.assertEquals(UpdateTime, CreateTime);
 
     }
+
+    public void UserBlankAssert()
+    {
+        String ActBlankErrMsg=driver.findElement(BlnkErrMsg).getText();
+        String ExpctdBlankErrMsg="Please Check Form Detail ...!";
+        softAssert.assertEquals(ActBlankErrMsg, ExpctdBlankErrMsg);
+    }
+
+    public void UserExistAssert()
+    {
+        String ActExistErrMsg = driver.findElement(ExistErrMsg).getText();
+        String ExpctdExistErrMsg ="User exists with email sampleemail@email.com";
+        softAssert.assertEquals(ActExistErrMsg, ExpctdExistErrMsg);
+    }
+
 
     public void UpdateTimeAssert()
     {
         String UpdateTime=driver.findElement(UpdatedTime).getText();
         String CreateTime=driver.findElement(CreatedTime).getText();
-        Assert.assertNotEquals(UpdateTime,CreateTime);
+        softAssert.assertNotEquals(UpdateTime,CreateTime);
 
     }
+
+    public void AssertAll()
+    {
+        softAssert.assertAll();
+    }
+
+    public void LogOut()
+    {
+        driver.findElement(logout).click();
+    }
+
+    public void setUsername(String text) {
+        driver.findElement(username).sendKeys(text);
+    }
+    public void setPassword(String text) {
+        driver.findElement(password).sendKeys(text);
+    }
+    public void clickLoginButton() {
+        driver.findElement(loginBtn).click();
+    }
+    public void SelectUpdatedUser()
+    {
+        driver.findElement(UserUpdated).click();
+    }
+
+
 
 
 }

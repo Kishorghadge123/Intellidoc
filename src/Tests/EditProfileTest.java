@@ -1,23 +1,24 @@
 package Tests;
 
-        import Base.BasePage;
-        import Pages.EditProfilePage;
-        import Pages.LoginPage;
-        import Utilities.ReadProps;
-        import Utilities.TakesScreen;
-        import com.relevantcodes.extentreports.ExtentReports;
-        import org.openqa.selenium.WebDriver;
-        import org.openqa.selenium.chrome.ChromeDriver;
-        import org.testng.annotations.AfterClass;
-        import org.testng.annotations.BeforeClass;
-        import org.testng.annotations.Test;
+import Base.BasePage;
+import Pages.EditProfilePage;
+import Pages.LoginPage;
+import Utilities.ReadProps;
+import Utilities.TakesScreen;
+import com.relevantcodes.extentreports.ExtentReports;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
-        import java.io.IOException;
-        import java.util.concurrent.TimeUnit;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 
-
-public class EditProfileTest extends BasePage{
+public class EditProfileTest extends BasePage {
 
 
     @Test
@@ -27,7 +28,7 @@ public class EditProfileTest extends BasePage{
             String projectPath = System.getProperty("user.dir");
             System.setProperty("webdriver.chrome.driver", projectPath + ".\\Drivers\\chromedriver.exe");
             WebDriver driver = new ChromeDriver();
-            EditProfilePage EditProfileObj =new EditProfilePage(driver);
+            EditProfilePage EditProfileObj = new EditProfilePage(driver);
             test.log(status.INFO, "TestInformation");
             test.log(status.PASS, "TestPassed");
 
@@ -47,16 +48,16 @@ public class EditProfileTest extends BasePage{
 
             EditProfileObj.clickVisible();
             Thread.sleep(2000);
-            TakesScreen.takeSnapShot(driver,"test-output//EditProfileTest//VisiblePWD.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//EditProfileTest//VisiblePWD.jpg");
             Thread.sleep(3000);
 
             //TC 12.3 Visible PWD Off
 
             EditProfileObj.clickVisible();
             Thread.sleep(4000);
-            TakesScreen.takeSnapShot(driver,"test-output//EditProfileTest//InVisiblePWD.jpg");
+            TakesScreen.takeSnapShot(driver, "test-output//EditProfileTest//InVisiblePWD.jpg");
             loginPageObjects.clickLoginButton();
-            Thread.sleep(8000);
+            Thread.sleep(10000);
 
             //TC 12.4 Profiel Icon
 
@@ -79,8 +80,35 @@ public class EditProfileTest extends BasePage{
             Thread.sleep(3000);
             TakesScreen.takeSnapShot(driver, "test-output//EditProfileTest//EditProfileButton.jpg");
             Thread.sleep(2000);
+            // WebElement upload_file = driver.findElement(By.xpath("//div[@class='modal-content']/div/div/div/label"));
+            // upload_file.sendKeys("C:\\Users\\juee.ningshetti\\IdeaProjects\\Intellidoc\\Files\\NTS.png");
             EditProfileObj.CancelButton();
+            Thread.sleep(2000);
+
+            //Save Button functionality
+           /* EditProfileObj.EditProfileButton();
+            Thread.sleep(3000);
+            TakesScreen.takeSnapShot(driver, "test-output//EditProfileTest//EditProfileButton.jpg");
+            Thread.sleep(2000);
+           // WebElement upload_file = driver.findElement(By.xpath("//div[contains(text(),'N')]"));
+            upload_file.sendKeys("C:\\Users\\juee.ningshetti\\IdeaProjects\\Intellidoc\\Files\\NTS.png");
             Thread.sleep(4000);
+            EditProfileObj.SaveProfile();
+            Thread.sleep(4000);
+
+            //Remove Profile
+           EditProfileObj.EditProfileButton();
+            Thread.sleep(3000);
+            EditProfileObj.RemoveProfile();
+            Thread.sleep(3000);
+            EditProfileObj.CancelButton();
+            Thread.sleep(3000);
+            EditProfileObj.EditProfileButton();
+            Thread.sleep(3000);
+            EditProfileObj.RemoveProfile();
+            Thread.sleep(3000);
+            EditProfileObj.SaveProfile();
+            Thread.sleep(4000);*/
 
 
             driver.close();
